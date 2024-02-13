@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine?</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ccffcc; /* Light green background */
+        text-align: center;
+        padding: 20px;
+    }
+    .invitation {
+        background: #ffffff;
+        padding: 20px;
+        margin: 20px auto;
+        width: 80%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+    }
+    #noButton {
+        position: relative;
+    }
+    img.gif {
+        width: 200px;
+        height: auto;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="invitation">
+    <h1>Will You Be My Valentine?</h1>
+    <img src="YOUR_INITIAL_FROG_GIF_URL_HERE" alt="Frog Gif" id="beforeAnswerGif" class="gif">
+    <div id="answerButtons">
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+    </div>
+    <div id="response" style="display:none;">
+        <!-- Response will go here -->
+    </div>
+</div>
+
+<script>
+    document.getElementById('yesButton').addEventListener('click', function() {
+        document.getElementById('beforeAnswerGif').style.display = 'none';
+        document.getElementById('answerButtons').style.display = 'none';
+        document.getElementById('response').style.display = 'block';
+        document.getElementById('response').innerHTML = '<h2>Yay! You made my day!</h2><img src="YOUR_YES_RESPONSE_FROG_GIF_URL_HERE" alt="Happy Frog Gif" class="gif">';
+    });
+
+    document.getElementById('noButton').addEventListener('mouseover', function(event) {
+        const noButton = event.target;
+        const deltaX = Math.random() * 100 - 50;
+        const deltaY = Math.random() * 100 - 50;
+        let newX = noButton.offsetLeft + deltaX;
+        let newY = noButton.offsetTop + deltaY;
+        // Keep button within the invitation area
+        newX = Math.max(0, Math.min(newX, window.innerWidth - noButton.offsetWidth));
+        newY = Math.max(0, Math.min(newY, window.innerHeight - noButton.offsetHeight));
+        noButton.style.position = 'absolute';
+        noButton.style.left = newX + 'px';
+        noButton.style.top = newY + 'px';
+    });
+</script>
+
+</body>
+</html>
